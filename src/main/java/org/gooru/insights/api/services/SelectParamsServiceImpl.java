@@ -27,7 +27,6 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 
 	private void putDefaultValues() {
 		defaultParam = new HashMap<String, Map<String, String>>();
-		putDefaultLiveDashboardCache();
 		putDefaultClasspageCollectionUsage();
 		putDefaultClasspageCollectionOEResources();
 		putDefaultClasspageResourceUsage();
@@ -75,33 +74,13 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 		selectParam.put("liveDashboard", liveDashboard);
 	}
 	
-	private void putDefaultLiveDashboardCache(){
-		Map<String, String> liveDashboard = new HashMap<String,String>();
-		liveDashboard.put("reaction", "reactions");
-		liveDashboard.put("rate", "rate");
-		liveDashboard.put("description", "description");
-		liveDashboard.put("gooruOId", "gooru_oid");
-		liveDashboard.put("title", "title");
-		liveDashboard.put("resourceFormat", "resourceFormat");
-		liveDashboard.put("thumbnail", "url");
-		liveDashboard.put("key", "key");
-		defaultParam.put("liveDashboard", liveDashboard);
-	}
-
 	private void putDefaultClasspageCollectionOEResources(){
 		
 		Map<String, String> classPageCollectionOEResource = new HashMap<String,String>();
-		classPageCollectionOEResource.put("text", "~choice");
 		classPageCollectionOEResource.put("questionType", "question_type");
-		classPageCollectionOEResource.put("score", "~score");
 		classPageCollectionOEResource.put("resourceGooruOId", "gooru_oid");
-		classPageCollectionOEResource.put("attemptStatus", "~question_status");
 		classPageCollectionOEResource.put("userName", "username");
 		classPageCollectionOEResource.put("gooruUId", "gooru_uid");
-		classPageCollectionOEResource.put("timeSpent", "~time_spent");
-		classPageCollectionOEResource.put("avgReaction", "~avg_reaction");
-		classPageCollectionOEResource.put("views", "~views");
-		classPageCollectionOEResource.put("avgTimeSpent", "~avg_time_spent");
 		classPageCollectionOEResource.put("collectionGooruOId", "collection_gooru_oid");
 		classPageCollectionOEResource.put("title", "title");
 		classPageCollectionOEResource.put("resourceFormat", "resourceFormat");
@@ -109,8 +88,6 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 		classPageCollectionOEResource.put("lastModified", "last_modified");
 		classPageCollectionOEResource.put("category", "category");
 		classPageCollectionOEResource.put("thumbnail", "thumbnail");
-		classPageCollectionOEResource.put("reaction", "~RA");
-		classPageCollectionOEResource.put("skip", "~skipped");
 		classPageCollectionOEResource.put("status", "deleted");
 		classPageCollectionOEResource.put("userData", "userData");
 		classPageCollectionOEResource.put("itemSequence", "item_sequence");
@@ -218,28 +195,14 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 	private void putDefaultClasspageCollectionUsage(){
 		
 		Map<String, String> classCollectionUsage = new HashMap<String,String>();
-		classCollectionUsage.put("timeSpent", "~time_spent");
-		classCollectionUsage.put("views", "~views");
-		classCollectionUsage.put("avgTimeSpent", "~avg_time_spent");
-		classCollectionUsage.put("text", "~choice");
 		classCollectionUsage.put("gooruOId", "gooruOId");
-		classCollectionUsage.put("avgReaction", "~avg_reaction");
 		classCollectionUsage.put("title", "title");
 		classCollectionUsage.put("lastAccessed", "lastAccessed");
 		classCollectionUsage.put("description", "goals");
 		classCollectionUsage.put("lastModified", "last_modified");
-		classCollectionUsage.put("category", "category");
 		classCollectionUsage.put("thumbnail", "thumbnail");
-		classCollectionUsage.put("score", "~score");
-		classCollectionUsage.put("options", "~A,~A~status,~B,~B~status,~C,~C~status,~D~status,~D,~E,~E~status,~options,dataSet");
-		classCollectionUsage.put("selectedOptions", "~options");
-		classCollectionUsage.put("totalAttemptUserCount", "~tau");
-		classCollectionUsage.put("totalCorrectCount", "~correct");
 		classCollectionUsage.put("userCount", "userCount");
-		classCollectionUsage.put("totalInCorrectCount", "~in-correct");
-		classCollectionUsage.put("skip", "~skipped");
 		classCollectionUsage.put("completionStatus", "~completion_progress");
-		classCollectionUsage.put("gradeInPercentage", "~grade_in_percentage");
 		classCollectionUsage.put("totalQuestionCount", "totalQuestionCount");
 		classCollectionUsage.put("nonResourceCount", "nonResourceCount");
 		classCollectionUsage.put("resourceCount", "resourceCount");
@@ -299,19 +262,10 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 	private void putDefaultClasspageResourceUsage(){
 		
 		Map<String, String> classpageResourceUsage = new HashMap<String,String>();
-		classpageResourceUsage.put("timeSpent", "~time_spent");
-		classpageResourceUsage.put("views", "~views");
-		classpageResourceUsage.put("avgTimeSpent", "~avg_time_spent");
-		classpageResourceUsage.put("text", "~choice");
-		classpageResourceUsage.put("questionType", "~type");
 		classpageResourceUsage.put("type", "question_type");
-		classpageResourceUsage.put("score", "~score");
-		classpageResourceUsage.put("attemptStatus", "~question_status");
 		classpageResourceUsage.put("resourceGooruOId", "gooruOId");
 		classpageResourceUsage.put("userName", "username");
 		classpageResourceUsage.put("gooruUId", "gooruUid");
-		classpageResourceUsage.put("avgReaction", "~avg_reaction");
-		classpageResourceUsage.put("reaction", "~RA");
 		classpageResourceUsage.put("collectionStatus", "collection_status");
 		classpageResourceUsage.put("collectionGooruOId", "collection_gooru_oid");
 		classpageResourceUsage.put("title", "title");
@@ -319,27 +273,13 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 		classpageResourceUsage.put("lastModified", "lastModified");
 		classpageResourceUsage.put("category", "category");
 		classpageResourceUsage.put("thumbnail", "thumbnail");
-		classpageResourceUsage.put("options", "~A,~A~status,~B,~B~status,~C,~C~status,~D~status,~D,~E,~E~status,~options,dataSet");
 		classpageResourceUsage.put("metaData", "metaData");
 		classpageResourceUsage.put("userData", "userData");
-		classpageResourceUsage.put("skip", "~skipped");
-		classpageResourceUsage.put("totalAttemptUserCount", "~tau");
-		classpageResourceUsage.put("attempts", "~attempts");
-		classpageResourceUsage.put("totalCorrectCount", "~correct");
-		classpageResourceUsage.put("totalInCorrectCount", "~in-correct");
 		classpageResourceUsage.put("status", "deleted");
 		classpageResourceUsage.put("userCount", "userCount");
 		classpageResourceUsage.put("itemSequence", "item_sequence");
 		classpageResourceUsage.put("gradeInPercentage", "~grade_in_percentage");
-		classpageResourceUsage.put("totalQuestionCount", "~question_count");
-		classpageResourceUsage.put("answerObject", "~answer_object");
-		classpageResourceUsage.put("feedbackStatus", "~active");
-		classpageResourceUsage.put("feedbackText", "~feed_back");
-		classpageResourceUsage.put("feedbackProviderUId", "~feed_back_provider");
-		classpageResourceUsage.put("feedbackTimestamp", "~feed_back_timestamp");
-		classpageResourceUsage.put("feedbackTeacherName", "teachername");
 		classpageResourceUsage.put("hasFrameBreaker", "statistics.hasFrameBreakerN");
-		classpageResourceUsage.put("organization_uid", "organization.partyUid");
 		// for Goals
 		classpageResourceUsage.put("isRequired", "is_required");
 		classpageResourceUsage.put("minimumScore", "minimum_score");
@@ -449,7 +389,6 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 		classpageUser.put("userName", "username");
 		classpageUser.put("gooruOId","classpage_gooru_oid");
 		classpageUser.put("gooruUId", "gooru_uid");
-		classpageUser.put("userGroupCode", "user_group_code");
 		classpageUser.put("userGroupUId", "user_group_uid");
 		classpageUser.put("organizationUId", "organization_uid");
 		classpageUser.put("status", "active_flag");
@@ -459,16 +398,10 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 		
 		Map<String, String> oeResource = new HashMap<String,String>();
 		oeResource.put("userName", "username");
-		oeResource.put("OEText", "~choice");
 		oeResource.put("gooruUid", "gooruUid");
 		oeResource.put("userGroupUId", "user_group_uid");
 		oeResource.put("organizationUId", "organizationUid");
 		oeResource.put("status", "active_flag");
-		oeResource.put("answerObject", "~answer_object");
-		oeResource.put("feedbackStatus", "~active");
-		oeResource.put("feedbackText", "~feed_back");
-		oeResource.put("feedbackProviderUId", "~feed_back_provider");
-		oeResource.put("feedbackTimestamp", "~feed_back_timestamp");
 		oeResource.put("hasFrameBreaker", "statistics.hasFrameBreakerN");
 		defaultParam.put("oeResource", oeResource);
 	}
@@ -642,14 +575,18 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 				throw new BadRequestException(ErrorMessages.E102 + selectValue);
 			}
 		}
+		System.out.println("testing");
 		if(defaultParam.get(key) != null){
+			System.out.println("object not null");
 			selectedValues.putAll(defaultParam.get(key));
+			System.out.println("data"+selectedValues);
 			for(String inputValue : hibernateSelectValues.values()){
 				if(!filterFields.contains(inputValue)){
 				addComma(fetchFields, inputValue);
 				}
 			}
 		}
+		System.out.println("data2"+fetchFields);
 		return fetchFields.toString();
 	}
 	
