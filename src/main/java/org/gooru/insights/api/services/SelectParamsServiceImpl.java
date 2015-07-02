@@ -17,11 +17,23 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 
 	private static Map<String,Map<String,String>> selectParam;
 	
+	private Map<String,Map<String,String>> defaultParam;
+	
 	@PostConstruct
 	private void init() {
 		putSelectValues();
+		putDefaultValues();
 	}
 
+	private void putDefaultValues() {
+		defaultParam = new HashMap<String, Map<String, String>>();
+		putDefaultClasspageCollectionUsage();
+		putDefaultClasspageCollectionOEResources();
+		putDefaultClasspageResourceUsage();
+		putDefaultOEResource();
+		putDefaultClasspageUser();
+	}
+	
 	private void putSelectValues() {
 		selectParam = new HashMap<String, Map<String, String>>();
 		putLiveDashboardCache();
@@ -61,7 +73,28 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 		liveDashboard.put("key", "key");
 		selectParam.put("liveDashboard", liveDashboard);
 	}
-
+	
+	private void putDefaultClasspageCollectionOEResources(){
+		
+		Map<String, String> classPageCollectionOEResource = new HashMap<String,String>();
+		classPageCollectionOEResource.put("questionType", "question_type");
+		classPageCollectionOEResource.put("resourceGooruOId", "gooru_oid");
+		classPageCollectionOEResource.put("userName", "username");
+		classPageCollectionOEResource.put("gooruUId", "gooru_uid");
+		classPageCollectionOEResource.put("collectionGooruOId", "collection_gooru_oid");
+		classPageCollectionOEResource.put("title", "title");
+		classPageCollectionOEResource.put("resourceFormat", "resourceFormat");
+		classPageCollectionOEResource.put("description", "description");
+		classPageCollectionOEResource.put("lastModified", "last_modified");
+		classPageCollectionOEResource.put("category", "category");
+		classPageCollectionOEResource.put("thumbnail", "thumbnail");
+		classPageCollectionOEResource.put("status", "deleted");
+		classPageCollectionOEResource.put("userData", "userData");
+		classPageCollectionOEResource.put("itemSequence", "item_sequence");
+		classPageCollectionOEResource.put("hasFrameBreaker", "hasFrameBreaker");		
+		defaultParam.put("classPageCollectionOEResource", classPageCollectionOEResource);
+	}
+	
 	private void putClasspageCollectionOEResources(){
 		
 		Map<String, String> classPageCollectionOEResource = new HashMap<String,String>();
@@ -159,6 +192,25 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 		selectParam.put("classCollectionDetail", classCollectionDetail);
 	}
 	
+	private void putDefaultClasspageCollectionUsage(){
+		
+		Map<String, String> classCollectionUsage = new HashMap<String,String>();
+		classCollectionUsage.put("gooruOId", "gooruOId");
+		classCollectionUsage.put("title", "title");
+		classCollectionUsage.put("lastAccessed", "lastAccessed");
+		classCollectionUsage.put("description", "goals");
+		classCollectionUsage.put("lastModified", "last_modified");
+		classCollectionUsage.put("thumbnail", "thumbnail");
+		classCollectionUsage.put("userCount", "userCount");
+		classCollectionUsage.put("completionStatus", "~completion_progress");
+		classCollectionUsage.put("totalQuestionCount", "totalQuestionCount");
+		classCollectionUsage.put("nonResourceCount", "nonResourceCount");
+		classCollectionUsage.put("resourceCount", "resourceCount");
+		classCollectionUsage.put("itemCount", "itemCount");
+		classCollectionUsage.put("hasFrameBreaker", "statistics.hasFrameBreakerN");
+		defaultParam.put("classCollectionUsage", classCollectionUsage);
+	}
+	
 	private void putClasspageCollectionUsage(){
 		
 		Map<String, String> classCollectionUsage = new HashMap<String,String>();
@@ -205,6 +257,43 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 		userDetail.put("registeredOn", "registered_on");
 		userDetail.put("userName", "username");
 		selectParam.put("userDetail", userDetail);
+	}
+
+	private void putDefaultClasspageResourceUsage(){
+		
+		Map<String, String> classpageResourceUsage = new HashMap<String,String>();
+		classpageResourceUsage.put("type", "question_type");
+		classpageResourceUsage.put("resourceGooruOId", "gooruOId");
+		classpageResourceUsage.put("userName", "username");
+		classpageResourceUsage.put("gooruUId", "gooruUid");
+		classpageResourceUsage.put("collectionStatus", "collection_status");
+		classpageResourceUsage.put("collectionGooruOId", "collection_gooru_oid");
+		classpageResourceUsage.put("title", "title");
+		classpageResourceUsage.put("description", "description");
+		classpageResourceUsage.put("lastModified", "lastModified");
+		classpageResourceUsage.put("category", "category");
+		classpageResourceUsage.put("thumbnail", "thumbnail");
+		classpageResourceUsage.put("metaData", "metaData");
+		classpageResourceUsage.put("userData", "userData");
+		classpageResourceUsage.put("status", "deleted");
+		classpageResourceUsage.put("userCount", "userCount");
+		classpageResourceUsage.put("itemSequence", "item_sequence");
+		classpageResourceUsage.put("gradeInPercentage", "~grade_in_percentage");
+		classpageResourceUsage.put("hasFrameBreaker", "statistics.hasFrameBreakerN");
+		// for Goals
+		classpageResourceUsage.put("isRequired", "is_required");
+		classpageResourceUsage.put("minimumScore", "minimum_score");
+		classpageResourceUsage.put("estimatedTime", "estimated_time");
+
+		// user data
+		classpageResourceUsage.put("lastName", "lastname");
+		classpageResourceUsage.put("createdOn", "createdOn");
+		classpageResourceUsage.put("firstName", "firstname");
+		classpageResourceUsage.put("emailId", "external_id");
+		classpageResourceUsage.put("resourceFormat", "resourceFormat");
+		classpageResourceUsage.put("associatedDate", "association_date");
+		classpageResourceUsage.put("profileUrl", "profile_url");
+		defaultParam.put("classpageResourceUsage", classpageResourceUsage);
 	}
 	
 	private void putClasspageResourceUsage(){
@@ -265,7 +354,6 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 		classpageResourceUsage.put("associatedDate", "association_date");
 		classpageResourceUsage.put("profileUrl", "profile_url");
 		selectParam.put("classpageResourceUsage", classpageResourceUsage);
-
 	}
 	
 	private void putAssessmentAnswer(){
@@ -295,6 +383,29 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 		selectParam.put("classpageUser", classpageUser);
 	}
 
+	private void putDefaultClasspageUser(){
+		
+		Map<String, String> classpageUser = new HashMap<String,String>();
+		classpageUser.put("userName", "username");
+		classpageUser.put("gooruOId","classpage_gooru_oid");
+		classpageUser.put("gooruUId", "gooru_uid");
+		classpageUser.put("userGroupUId", "user_group_uid");
+		classpageUser.put("organizationUId", "organization_uid");
+		classpageUser.put("status", "active_flag");
+		defaultParam.put("classpageUser", classpageUser);
+	}
+	private void putDefaultOEResource(){
+		
+		Map<String, String> oeResource = new HashMap<String,String>();
+		oeResource.put("userName", "username");
+		oeResource.put("gooruUid", "gooruUid");
+		oeResource.put("userGroupUId", "user_group_uid");
+		oeResource.put("organizationUId", "organizationUid");
+		oeResource.put("status", "active_flag");
+		oeResource.put("hasFrameBreaker", "statistics.hasFrameBreakerN");
+		defaultParam.put("oeResource", oeResource);
+	}
+	
 	private void putOEResource(){
 		
 		Map<String, String> oeResource = new HashMap<String,String>();
@@ -312,7 +423,6 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 		oeResource.put("hasFrameBreaker", "statistics.hasFrameBreakerN");
 		selectParam.put("oeResource", oeResource);
 	}
-	
 	private void putUserPreference(){
 		
 		Map<String, String> userPreference = new HashMap<String,String>();
@@ -350,55 +460,55 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 	
 	
 	public String getClasspageCollectionOEResources(String fields, Map<String, String> selectValues) throws Exception {
-		return getSelectValues(selectParam.get("classPageCollectionOEResource"), fields, selectValues);
+		return getSelectValues(selectParam.get("classPageCollectionOEResource"),"classPageCollectionOEResource", fields, selectValues);
 	}
 	
 	public String getClasspageDetail(String fields,Map<String,String> selectValues) throws Exception {
-		return getSelectValues(selectParam.get("classpageDetail"), fields, selectValues);
+		return getSelectValues(selectParam.get("classpageDetail"),"classpageDetail", fields, selectValues);
 	}
 	
 	public String getClassExportDetail(String fields,Map<String,String> selectValues) throws Exception {
-		return getSelectValues(selectParam.get("classExportDetail"), fields, selectValues);
+		return getSelectValues(selectParam.get("classExportDetail"),"classExportDetail", fields, selectValues);
 	}
 
 	public String getAggCollectionExportDetail(String fields,Map<String,String> selectValues) throws Exception {
-		return getSelectValues(selectParam.get("collectionExportDetail"), fields, selectValues);
+		return getSelectValues(selectParam.get("collectionExportDetail"),"collectionExportDetail", fields, selectValues);
 	}
 
 	public String getClassResourceExportDetail(String fields,Map<String,String> selectValues) throws Exception {
-		return getSelectValues(selectParam.get("classResourceExportDetail"), fields, selectValues);
+		return getSelectValues(selectParam.get("classResourceExportDetail"),"classResourceExportDetail", fields, selectValues);
 	}
 
 	public String getClasspageCollectionDetail(String fields,Map<String,String> selectValues) throws Exception {
-		return getSelectValues(selectParam.get("classCollectionDetail"), fields, selectValues);
+		return getSelectValues(selectParam.get("classCollectionDetail"),"classCollectionDetail", fields, selectValues);
 	}
 	
 	 /**
 	  * classPage select values
 	  */
 	public String getClasspageCollectionUsage(String fields, Map<String, String> selectedValues) throws Exception {
-		return getSelectValues(selectParam.get("classCollectionUsage"), fields, selectedValues);
+		return getSelectValues(selectParam.get("classCollectionUsage"),"classCollectionUsage", fields, selectedValues);
 	}
 	
 	public String getUser(String fields, Map<String, String> selectValues) throws Exception {
-		return getSelectValues(selectParam.get("userDetail"), fields, selectValues);
+		return getSelectValues(selectParam.get("userDetail"),"userDetail", fields, selectValues);
 	}
 
 	 //classPage select values
 	public String getClasspageResourceUsage(String fields, Map<String, String> selectedValues) throws Exception {
-		return getSelectValues(selectParam.get("classpageResourceUsage"), fields, selectedValues);
+		return getSelectValues(selectParam.get("classpageResourceUsage"),"classpageResourceUsage", fields, selectedValues);
 	}
 	
 	public String getAssessmentAnswer(String fields,
 			Map<String, String> selectValues) throws Exception {
-		return getSelectValues(selectParam.get("assessmentAnswer"), fields, selectValues);
+		return getSelectValues(selectParam.get("assessmentAnswer"),"assessmentAnswer", fields, selectValues);
 	}
 		
 		/**
 		 * Will provide the classpage user list mapping
 		 */
 		public String getClasspageUser(String field,Map<String,String> selectedValues) throws Exception{
-		return getSelectValues(selectParam.get("classpageUser"), field,selectedValues);
+		return getSelectValues(selectParam.get("classpageUser"),"classpageUser", field,selectedValues);
 	}
 
 	/**
@@ -410,7 +520,7 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 	 */
 	public String getOEResource(String fields,
 			Map<String, String> selectedValues) throws Exception {
-		return getSelectValues(selectParam.get("oeResource"), fields, selectedValues);
+		return getSelectValues(selectParam.get("oeResource"),"oeResource", fields, selectedValues);
 	}
 
 	//Get user preference vectors column names
@@ -439,6 +549,7 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 	public String getSelectValues(Map<String, String> hibernateSelectValues,
 			String value, Map<String, String> selectedValues) throws Exception {
 		StringBuffer fetchFields = new StringBuffer();
+		
 		Set<String> filterFields = avoidDuplicate(value);
 		for (String selectValue : filterFields) {
 			if (hibernateSelectValues.containsKey(selectValue)) {
@@ -446,6 +557,30 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 				addComma(fetchFields, hibernateSelectValues.get(selectValue));
 			} else {
 				throw new BadRequestException(ErrorMessages.E102 + selectValue);
+			}
+		}
+		return fetchFields.toString();
+	}
+	
+	public String getSelectValues(Map<String, String> hibernateSelectValues,String key,
+			String value, Map<String, String> selectedValues) throws Exception {
+		StringBuffer fetchFields = new StringBuffer();
+		
+		Set<String> filterFields = avoidDuplicate(value);
+		for (String selectValue : filterFields) {
+			if (hibernateSelectValues.containsKey(selectValue)) {
+				selectedValues.put(selectValue,hibernateSelectValues.get(selectValue));
+				addComma(fetchFields, hibernateSelectValues.get(selectValue));
+			} else {
+				throw new BadRequestException(ErrorMessages.E102 + selectValue);
+			}
+		}
+		if(defaultParam.get(key) != null){
+			selectedValues.putAll(defaultParam.get(key));
+			for(String inputValue : hibernateSelectValues.values()){
+				if(!filterFields.contains(inputValue)){
+				addComma(fetchFields, inputValue);
+				}
 			}
 		}
 		return fetchFields.toString();
