@@ -575,18 +575,14 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 				throw new BadRequestException(ErrorMessages.E102 + selectValue);
 			}
 		}
-		System.out.println("testing");
 		if(defaultParam.get(key) != null){
-			System.out.println("object not null");
 			selectedValues.putAll(defaultParam.get(key));
-			System.out.println("data"+selectedValues);
 			for(String inputValue : hibernateSelectValues.values()){
 				if(!filterFields.contains(inputValue)){
 				addComma(fetchFields, inputValue);
 				}
 			}
 		}
-		System.out.println("data2"+fetchFields);
 		return fetchFields.toString();
 	}
 	
