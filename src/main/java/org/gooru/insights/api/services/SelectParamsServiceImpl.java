@@ -287,12 +287,14 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 
 		// user data
 		classpageResourceUsage.put("lastName", "lastname");
+		classpageResourceUsage.put("text", "~choice");
 		classpageResourceUsage.put("createdOn", "createdOn");
 		classpageResourceUsage.put("firstName", "firstname");
 		classpageResourceUsage.put("emailId", "external_id");
 		classpageResourceUsage.put("resourceFormat", "resourceFormat");
 		classpageResourceUsage.put("associatedDate", "association_date");
 		classpageResourceUsage.put("profileUrl", "profile_url");
+		classpageResourceUsage.put("answerObject", "~answer_object");
 		defaultParam.put("classpageResourceUsage", classpageResourceUsage);
 	}
 	
