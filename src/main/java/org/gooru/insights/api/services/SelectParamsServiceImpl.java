@@ -283,6 +283,7 @@ public class SelectParamsServiceImpl implements SelectParamsService {
 		// for Goals
 		classpageResourceUsage.put("isRequired", "is_required");
 		classpageResourceUsage.put("minimumScore", "minimum_score");
+		classpageResourceUsage.put("score", "~score");
 		classpageResourceUsage.put("estimatedTime", "estimated_time");
 
 		// user data
