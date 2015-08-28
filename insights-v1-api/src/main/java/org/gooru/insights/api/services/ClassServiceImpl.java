@@ -812,22 +812,25 @@ public class ClassServiceImpl implements ClassService, InsightsConstant {
 		// fetch metadata
 		ColumnList<String> resourceColumn = getCassandraService().read(ColumnFamily.RESOURCE.getColumnFamily(), key, columnsToFetch).getResult();
 		// form thumbnail
-		String thumbnail = resourceColumn.getStringValue(ApiConstants.THUMBNAIL, null);
-		if (StringUtils.isNotBlank(thumbnail)) {
-			String nfsPath = filePath.getProperty(ApiConstants.NFS_BUCKET);
-			String folder = resourceColumn.getStringValue(ApiConstants.FOLDER, null);
+		if (columnsToFetch.contains(ApiConstants.THUMBNAIL)) {
+			String thumbnail = resourceColumn.getStringValue(ApiConstants.THUMBNAIL, null);
 			String thumb = null;
-			if (thumbnail.startsWith(ApiConstants._HTTP)) {
-				thumb = thumbnail;
-			} else {
-				if (thumbnail.contains(folder)) {
-					thumb = getBaseService().appendForwardSlash(nfsPath, thumbnail);
+			if (StringUtils.isNotBlank(thumbnail)) {
+				String nfsPath = filePath.getProperty(ApiConstants.NFS_BUCKET);
+				String folder = resourceColumn.getStringValue(ApiConstants.FOLDER, ApiConstants.STRING_EMPTY);
+				String protocol = isSecure ? ApiConstants._HTTPS : ApiConstants._HTTP;
+				if (thumbnail.startsWith(ApiConstants._HTTP)) {
+					thumb = thumbnail;
+					if (isSecure) {
+						thumb = thumbnail.replaceFirst(ApiConstants._HTTP, ApiConstants._HTTPS);
+					}
 				} else {
-					thumb = getBaseService().appendForwardSlash(nfsPath, folder, thumbnail);
+					if (thumbnail.contains(folder)) {
+						thumb = getBaseService().appendForwardSlash(protocol, nfsPath, thumbnail);
+					} else {
+						thumb = getBaseService().appendForwardSlash(protocol, nfsPath, folder, thumbnail);
+					}
 				}
-			}
-			if (isSecure) {
-				thumb = thumb.replaceFirst(ApiConstants._HTTP, ApiConstants._HTTPS);
 			}
 			dataMap.put(ApiConstants.THUMBNAIL, thumb);
 		}
