@@ -48,13 +48,13 @@ public class CassandraConnectionProvider {
 		try {
 			logger.info("Loading cassandra connection properties");
 			ConnectionPoolConfigurationImpl poolConfig = new ConnectionPoolConfigurationImpl("MyConnectionPool").setPort(9160).setSeeds(hosts).setSocketTimeout(30000).setMaxTimeoutWhenExhausted(2000)
-					.setMaxConnsPerHost(30).setInitConnsPerHost(1);
+					.setMaxConnsPerHost(10).setInitConnsPerHost(1);
 			if (!hosts.startsWith("127.0")) {
 				poolConfig.setLocalDatacenter(logDataCentre);
 			}
 
 			AstyanaxContext<Keyspace> logContext = new AstyanaxContext.Builder().forCluster(clusterName).forKeyspace(logKeyspaceName)
-					.withAstyanaxConfiguration(new AstyanaxConfigurationImpl().setDiscoveryType(NodeDiscoveryType.RING_DESCRIBE).setConnectionPoolType(ConnectionPoolType.ROUND_ROBIN))
+					.withAstyanaxConfiguration(new AstyanaxConfigurationImpl().setTargetCassandraVersion("2.1.4").setCqlVersion("3.0.0").setDiscoveryType(NodeDiscoveryType.RING_DESCRIBE).setConnectionPoolType(ConnectionPoolType.ROUND_ROBIN))
 					.withConnectionPoolConfiguration(poolConfig).withConnectionPoolMonitor(new CountingConnectionPoolMonitor()).buildKeyspace(ThriftFamilyFactory.getInstance());
 			logContext.start();
 			logKeyspace = (Keyspace) logContext.getClient();
