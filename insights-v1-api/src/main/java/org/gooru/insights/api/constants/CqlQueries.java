@@ -30,6 +30,8 @@ public class CqlQueries {
 	
 	public static final String GET_USER_PEER_DETAIL = "SELECT * FROM class_activity_peer_detail WHERE row_key = ?";
 	
+	public static final String GET_CLASS_COLLECTION_COUNT = "SELECT assessment_count,collection_count FROM class_collection_count WHERE class_uid=? AND collection_uid=?";
+	
 	//Taxonomy Query's
 	public static final String GET_SUBJECT_ACTIVITY = " SELECT course_id,domain_id,resource_type,views,timespent,score FROM content_taxonomy_activity  WHERE user_uid = ? AND subject_id =?";
 	
