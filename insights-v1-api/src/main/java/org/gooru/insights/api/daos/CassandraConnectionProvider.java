@@ -36,10 +36,10 @@ public class CassandraConnectionProvider {
     private void initConnection(){
     	if(logKeyspace == null){
         logger.info("Loading cassandra properties");
-        hosts = this.getCassandraConstant().getProperty("cluster.hosts");
-        clusterName = this.getCassandraConstant().getProperty("cluster.name");
-        logKeyspaceName = this.getCassandraConstant().getProperty("log.keyspace");
-        logDataCentre = this.getCassandraConstant().getProperty("log.datacentre");
+        hosts = this.getCassandraConstant().getProperty("archived.cassandra.seeds");
+        clusterName = this.getCassandraConstant().getProperty("archived.cassandra.cluster");
+        logKeyspaceName = this.getCassandraConstant().getProperty("archived.cassandra.keyspace");
+        logDataCentre = this.getCassandraConstant().getProperty("archived.cassandra.datacenter");
         initInsights();
         }
     }

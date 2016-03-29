@@ -81,10 +81,10 @@
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="properties">
 			<props>
-				<prop key="cluster.name">${cluster.name}</prop>
-				<prop key="cluster.hosts">${cluster.hosts}</prop>
-				<prop key="log.keyspace">${log.keyspace}</prop>
-				<prop key="log.datacentre">${log.datacentre}</prop>
+				<prop key="archived.cassandra.cluster">${archived.cassandra.cluster}</prop>
+				<prop key="archived.cassandra.seeds">${archived.cassandra.seeds}</prop>
+				<prop key="archived.cassandra.keyspace">${archived.cassandra.keyspace}</prop>
+				<prop key="archived.cassandra.datacenter">${archived.cassandra.datacenter}</prop>
 
 			</props>
 		</property>
@@ -147,7 +147,7 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>file:${configSettings}</value>
+				<value>file:${v1ReadApiConfigSettings}</value>
 			</list>
 		</property>
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
