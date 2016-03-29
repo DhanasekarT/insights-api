@@ -40,7 +40,6 @@ public class CassandraConnectionProvider {
         clusterName = this.getCassandraConstant().getProperty("archived.cassandra.cluster");
         logKeyspaceName = this.getCassandraConstant().getProperty("archived.cassandra.keyspace");
         logDataCentre = this.getCassandraConstant().getProperty("archived.cassandra.datacenter");
-        System.out.println("hosts:"+hosts+" clustername:"+clusterName+" log keyspace:"+logKeyspaceName+" datacenter:"+logDataCentre);
         initInsights();
         }
     }
