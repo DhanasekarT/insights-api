@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value="classpage/")
+@RequestMapping(value="/v1/classpage/")
 public class ClassPageController extends BaseController{
 
 	@Autowired

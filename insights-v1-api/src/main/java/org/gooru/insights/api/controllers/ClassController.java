@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value="/")
+@RequestMapping(value="/v1/")
 public class ClassController extends BaseController{
 
 	@Autowired
