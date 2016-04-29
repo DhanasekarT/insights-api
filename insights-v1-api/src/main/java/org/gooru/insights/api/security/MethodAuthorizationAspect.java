@@ -290,7 +290,7 @@ public class MethodAuthorizationAspect extends OperationAuthorizer {
 			String pathInfo = request.getPathInfo();
 			if (pathInfo.startsWith("/class/")) {
 				String[] pathParts = pathInfo.split("/");
-				classId = pathParts[2];
+				classId = pathParts[3];
 			} else {
 				classId = RequestUtils.getClassIdFromRequestParam(request);
 			}
