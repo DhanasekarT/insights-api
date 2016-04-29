@@ -288,7 +288,7 @@ public class MethodAuthorizationAspect extends OperationAuthorizer {
 			String userIdFromRequest = RequestUtils.getUserIdFromRequestParam(request);
 			String classId = null;
 			String pathInfo = request.getPathInfo();
-			if (pathInfo.startsWith("/class/")) {
+			if (pathInfo.startsWith("/v1/class/")) {
 				String[] pathParts = pathInfo.split("/");
 				classId = pathParts[3];
 			} else {
