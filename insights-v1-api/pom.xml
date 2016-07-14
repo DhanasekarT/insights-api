@@ -124,14 +124,14 @@
 		</dependency>
 		<!-- end -->
 		<!--redirect -->
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>org.restlet.jse</groupId>
 			<artifactId>org.restlet</artifactId>
 			<version>2.0.7</version>
 			<type>pom</type>
 			<scope>compile</scope>
-		</dependency>
-		<dependency>
+		</dependency> -->
+		<!-- <dependency>
 			<groupId>org.restlet.jse</groupId>
 			<artifactId>org.restlet</artifactId>
 			<version>2.0.7</version>
@@ -140,7 +140,7 @@
 			<groupId>org.restlet.jse</groupId>
 			<artifactId>org.restlet.ext.simple</artifactId>
 			<version>2.0.0</version>
-		</dependency>
+		</dependency> -->
 		<!-- jstl modelAndView result -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -196,11 +196,11 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.restlet.jse</groupId>
 			<artifactId>org.restlet.ext.json</artifactId>
 			<version>2.1-M3</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
@@ -362,17 +362,6 @@
 			<groupId>net.minidev</groupId>
 			<artifactId>json-smart</artifactId>
 			<version>2.0-RC3</version>
-		</dependency>
-		<!-- CORES Dependency for Access Origin -->
-		<dependency>
-			<groupId>com.thetransactioncompany</groupId>
-			<artifactId>java-property-utils</artifactId>
-			<version>1.9.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.thetransactioncompany</groupId>
-			<artifactId>cors-filter</artifactId>
-			<version>1.8</version>
 		</dependency>
 		<dependency>
 			<groupId>io.reactivex</groupId>
